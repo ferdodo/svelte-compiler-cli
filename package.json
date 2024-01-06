@@ -1,0 +1,23 @@
+{
+  "name": "svelte-compiler-cli",
+  "version": "0.1.0",
+  "description": "CLI to compile svelte components to js files.",
+  "bin": {
+    "svelte-compiler": "./bin/cli.js"
+  },
+  "scripts": {
+    "build": "tsc && npx --no-install svelte-compiler --infile=test.svelte --outfile=test.js"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.5",
+    "@types/yargs": "^17.0.24",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "svelte": "^4.1.1",
+    "yargs": "^17.7.2"
+  },
+  "peerDependencies": {
+    "yargs": "^17.7.2"
+  }
+}
