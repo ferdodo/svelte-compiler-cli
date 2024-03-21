@@ -1,6 +1,6 @@
 {
   "name": "svelte-compiler-cli",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "CLI to compile svelte components to js files.",
   "bin": {
     "svelte-compiler": "./bin/cli.js"
