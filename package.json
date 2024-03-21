@@ -6,18 +6,16 @@
     "svelte-compiler": "./bin/cli.js"
   },
   "scripts": {
-    "build": "tsc && npx --no-install svelte-compiler --infile=test.svelte --outfile=test.js"
+    "build": "tsc && npx svelte-compiler --infile=test.svelte --outfile=test.js && npx svelte-compiler --infile=typescript.test.svelte --outfile=typescript.test.js"
   },
   "devDependencies": {
     "@types/node": "^20.4.5",
     "@types/yargs": "^17.0.24",
+    "svelte-preprocess": "^5.1.3",
     "typescript": "^5.1.6"
   },
   "dependencies": {
     "svelte": "^4.1.1",
-    "yargs": "^17.7.2"
-  },
-  "peerDependencies": {
     "yargs": "^17.7.2"
   }
 }

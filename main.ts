@@ -1,7 +1,8 @@
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import { createWriteStream, WriteStream, readFileSync } from 'fs';
-import { compile } from "svelte/compiler";
+import { compile, Processed, preprocess, PreprocessorGroup } from "svelte/compiler";
+import { typescript } from 'svelte-preprocess';
 
 type Options = {
 	infile: string,
@@ -34,7 +35,10 @@ export async function transpile () {
 	const options: Options = await getOptions();
 	const outputStream: WriteStream = createWriteStream(options.outfile);
 	const source: string = readFileSync(options.infile, 'utf-8');
-	const result = compile(source, { filename: options.infile });
+	const preprocessorGoup: PreprocessorGroup = await typescript();
+	const filename = options.infile;
+	const preprocessed: Processed = await preprocess(source, preprocessorGoup, { filename });
+	const result = compile(preprocessed.code, { filename });
 	outputStream.write(result.js.code);
 	outputStream.close();
 }
